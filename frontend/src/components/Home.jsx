@@ -4,7 +4,7 @@ import Dashboard from "./Dashboard";
 import Signin from "./Signin";
 import Signup from "./Signup";
 import ProtectedRoute from "./ProtectedRoute";
-import HomePage from "./HomePage"; 
+import HomePage from "./Homepage"
 
 const Home = () => {
   return (
