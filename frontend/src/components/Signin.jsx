@@ -8,6 +8,7 @@ const Signin = () => {
     username: "",
     password: "",
   });
+  const apiUrl = import.meta.env.VITE_API_URL;
   const handleInput = (e) => {
     let { name, value } = e.target;
     setInput({ ...input, [name]: value });
@@ -15,7 +16,7 @@ const Signin = () => {
   };
   const handleSubmit = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/v1/user/signin", {
+      const response = await fetch(`${apiUrl}/api/v1/user/signin`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

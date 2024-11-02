@@ -3,18 +3,20 @@ import React, { useState } from "react";
 const SendMoneyModal = ({ user, closeModal, setUserData, userData }) => {
   const [input, setInput] = useState("");
   const [error, setError] = useState("");
+  const apiUrl = import.meta.env.VITE_API_URL;
   const handleInput = (e) => {
     setInput(e.target.value);
     setError("")
   };
   const handleSubmit = async () => {
     const token = localStorage.getItem("authToken");
+    
     if (!token) {
       setError("User is not authenticated");
     }
     try {
       const response = await fetch(
-        "http://localhost:3000/api/v1/account/balance",
+        `${apiUrl}/api/v1/account/balance`,
         {
           method: "POST",
           headers: {

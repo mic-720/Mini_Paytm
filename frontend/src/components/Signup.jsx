@@ -12,14 +12,16 @@ const Signup = () => {
   });
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const apiUrl = import.meta.env.VITE_API_URL;
   const handleInput = (e) => {
     const { name, value } = e.target;
     setInput({ ...input, [name]: value });
     if (error) setError("");
   };
   const handleSubmit = async () => {
+
     try {
-      const response = await fetch("http://localhost:3000/api/v1/user/signup", {
+      const response = await fetch(`${apiUrl}/api/v1/user/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -110,7 +112,7 @@ const Signup = () => {
         >
           Signup
         </button>
-        
+
         <p className="text-center">
           Already have an account?{" "}
           <span

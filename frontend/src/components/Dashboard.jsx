@@ -9,6 +9,7 @@ const Dashboard = () => {
   const [users, setUsers] = useState();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
+  const apiUrl = import.meta.env.VITE_API_URL;
 
   const openModal = (user) => {
     setSelectedUser(user);
@@ -25,7 +26,7 @@ const Dashboard = () => {
         setError("User is not authenticated");
       }
       const response = await fetch(
-        "http://localhost:3000/api/v1/user/profile",
+        `${apiUrl}/api/v1/user/profile`,
         {
           method: "GET",
           headers: {
@@ -52,7 +53,7 @@ const Dashboard = () => {
     }
     try {
       const response = await fetch(
-        `http://localhost:3000/api/v1/user/bulk?filter=${input}`,
+        `${apiUrl}/api/v1/user/bulk?filter=${input}`,
         {
           method: "GET",
           headers: {
